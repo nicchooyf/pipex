@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 22:13:01 by nchoo             #+#    #+#             */
-/*   Updated: 2022/08/30 23:09:43 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/01 21:22:28 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char *get_right_path(char **envp, char *cmd)
 	while (paths[++i])
 	{
 		cmd_path = ft_strjoin(paths[i], cmd);
-		if (access(paths[i], F_OK | X_OK) == 0)
+		if (access(cmd_path, F_OK | X_OK) == 0)
 			return (cmd_path);
 		free(cmd_path);
 	}
