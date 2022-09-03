@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:28:11 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/02 16:06:22 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/02 16:57:27 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int main(int ac, char **av, char **envp)
 	if (pipe(fd) == -1) return (1);
 
 	int pid = fork();
-	int pid2 = fork();
 	if (pid == -1) return (2);
-	if (pid2 == -1) return (3);
 
 	if (pid == 0) //child
 	{
@@ -32,16 +30,20 @@ int main(int ac, char **av, char **envp)
 		close(fd[WRITE]);
 		run_process(2, av, envp);
 	}
-	else if (pid2 == 0)
+	else
 	{
-		int status;
-		waitpid(pid, &status, -1);
-		close(fd[WRITE]);
-		dup2(fd[READ], STDIN);
-		dup2(open(av[4], O_WRONLY), STDOUT);
-		close(fd[READ]);
-		run_process(3, av, envp);
+		int pid2 = fork();
+		if (pid2 == -1) return (3);
+		if (pid2 == 0)
+		{
+			int status;
+			waitpid(pid, &status, -1);
+			close(fd[WRITE]);
+			dup2(fd[READ], STDIN);
+			dup2(open(av[4], O_WRONLY), STDOUT);
+			close(fd[READ]);
+			run_process(3, av, envp);
+		}
 	}
-	ft_printf("Made it to the end!\n");
-	return (0);
+	// ft_printf("Made it to the end!\n");
 }
