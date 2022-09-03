@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+         #
+#    By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 19:23:04 by nchoo             #+#    #+#              #
-#    Updated: 2022/08/30 22:36:29 by nchoo            ###   ########.fr        #
+#    Updated: 2022/09/03 15:27:26 by nchoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CFLAGS		=	-Wall -Werror -Wextra
 LIBFT		=	./libft/libft.a
 INCLUDES	=	-I includes
 SRC_FILES	=	main.c \
-				path.c
+				path.c \
+				exec.c
 SRC_DIR		=	src
 SRC			=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 RM			=	rm
