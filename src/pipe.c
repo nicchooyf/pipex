@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:12:10 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/05 14:07:03 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/09 23:20:02 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,16 @@
  *	i - index for av
  *	n - index for child
  */
-void do_pipex(t_pipe *data, char **av, char **env)
+void do_pipex(int ac, char **av, char **env)
 {
-	while (++data->i < data->ac)
+	int i;
+	int	n_commands;
+
+	i = 0;
+	n_commands = ac - 3;
+	while (++i < n_commands)
 	{
-		make_child(data, av, env);
+		get_right_path(env, av[i + 1]);
+		make_child(i, av, env);
 	}
 }

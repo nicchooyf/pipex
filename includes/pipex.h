@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:28:23 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/05 14:03:55 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/09 23:01:58 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@
 
 # define STDIN 0
 # define STDOUT 1
-
-typedef struct s_pipe
-{
-	int		i;
-	int		n;
-	int		ac;
-} t_pipe;
 
 char **get_envp_path(char **envp);
 char **get_paths(char *envp_path);
