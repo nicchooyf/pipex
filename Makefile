@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+         #
+#    By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 19:23:04 by nchoo             #+#    #+#              #
-#    Updated: 2022/09/05 14:04:02 by nchoo            ###   ########.fr        #
+#    Updated: 2022/09/10 19:41:41 by nchoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ INCLUDES	=	-I includes
 SRC_FILES	=	main.c \
 				path.c \
 				exec.c \
-				utils.c
+				utils.c \
+				child.c \
+				pipe.c
 SRC_DIR		=	src
 SRC			=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 RM			=	rm

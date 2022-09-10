@@ -1,5 +1,6 @@
 pipex
 .gitignore
+*test*
 
 # Prerequisites
 *.d

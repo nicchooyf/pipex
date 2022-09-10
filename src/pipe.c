@@ -6,11 +6,40 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:12:10 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/09 23:20:02 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/10 20:27:03 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+t_data	*init_data(int ac)
+{
+	t_data *data;
+
+	data = malloc(sizeof(data));
+	data->i = -1;
+	data->ac = ac;
+	data->n_commands = ac - 3;
+	return (data);
+
+}
+
+int **make_pipes(int ac)
+{
+	int n;
+	int i;
+	int **fd;
+
+	i = -1;
+	n = ac - 4;
+	fd = malloc(n * sizeof(int *));
+	while (++i < n)
+	{
+		fd[i] = malloc(2 * sizeof(int));
+		pipe(fd[i]);
+	}
+	return (fd);
+}
 
 /*
  *	./pipex file1 cmd1 ... cmd[i] file2
@@ -21,14 +50,20 @@
  */
 void do_pipex(int ac, char **av, char **env)
 {
-	int i;
-	int	n_commands;
+	int **fd;
+	t_data *data;
 
-	i = 0;
-	n_commands = ac - 3;
-	while (++i < n_commands)
+	fd = make_pipes(ac);
+	data = init_data(ac);
+	while (++data->i < data->n_commands)
 	{
-		get_right_path(env, av[i + 1]);
-		make_child(i, av, env);
+		make_child(data, av, fd, env);
 	}
+	data->i = -1;
+	while (fd[++data->i])
+	{
+		free(fd[data->i]);
+	}
+	free(fd);
+	free(data);
 }

@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:28:11 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/09 23:01:32 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/10 20:27:25 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int main(int ac, char **av, char **env)
 {
-	t_pipe *data;
-
 	if (ac >= 5)
 	{
 		do_pipex(ac, av, env);
 	}
+	// system("leaks pipex");
 }
