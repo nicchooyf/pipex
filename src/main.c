@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:28:11 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/02 16:57:27 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/10 21:00:34 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main(int ac, char **av, char **envp)
 			waitpid(pid, &status, -1);
 			close(fd[WRITE]);
 			dup2(fd[READ], STDIN);
-			dup2(open(av[4], O_WRONLY), STDOUT);
+			dup2(open(av[4], O_WRONLY | O_CREAT), STDOUT);
 			close(fd[READ]);
 			run_process(3, av, envp);
 		}
