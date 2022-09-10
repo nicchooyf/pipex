@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:12:10 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/10 20:27:03 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/10 21:30:59 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_data	*init_data(int ac)
 {
 	t_data *data;
 
-	data = malloc(sizeof(data));
+	data = malloc(sizeof(t_data));
 	data->i = -1;
 	data->ac = ac;
 	data->n_commands = ac - 3;
