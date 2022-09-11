@@ -6,13 +6,13 @@
 #    By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 19:23:04 by nchoo             #+#    #+#              #
-#    Updated: 2022/09/10 21:34:39 by nchoo            ###   ########.fr        #
+#    Updated: 2022/09/10 21:43:39 by nchoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	pipex
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS		=	-Wall -Werror -Wextra #-fsanitize=address -g3
 LIBFT		=	./libft/libft.a
 INCLUDES	=	-I includes
 SRC_FILES	=	main.c \

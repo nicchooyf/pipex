@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:12:10 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/10 21:30:59 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/11 15:21:02 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,33 @@ int **make_pipes(int ac)
 
 	i = -1;
 	n = ac - 4;
+	ft_printf("n:%d\n", n);
 	fd = malloc(n * sizeof(int *));
 	while (++i < n)
 	{
+		ft_printf("%d\n", i);
 		fd[i] = malloc(2 * sizeof(int));
 		pipe(fd[i]);
 	}
+	// i = 0;
+	// while (fd[i])
+	// 	printf("fd[%d]\n", i++);
 	return (fd);
+}
+
+void close_pipes(int **fd)
+{
+	int i;
+
+	i = -1;
+	while (fd[++i])
+	{
+		printf("fd[%d]\n", i);
+		close(fd[i][0]);
+		close(fd[i][1]);
+		free(fd[i]);
+	}
+	free(fd);
 }
 
 /*
@@ -50,6 +70,7 @@ int **make_pipes(int ac)
  */
 void do_pipex(int ac, char **av, char **env)
 {
+	// int pid;
 	int **fd;
 	t_data *data;
 
@@ -59,11 +80,11 @@ void do_pipex(int ac, char **av, char **env)
 	{
 		make_child(data, av, fd, env);
 	}
-	data->i = -1;
-	while (fd[++data->i])
-	{
-		free(fd[data->i]);
-	}
-	free(fd);
-	free(data);
+	// data->i = -1;
+	// while (fd[++data->i])
+	// {
+	// 	free(fd[data->i]);
+	// }
+	// free(fd);
+	// free(data);
 }

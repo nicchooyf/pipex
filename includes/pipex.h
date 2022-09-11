@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:28:23 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/10 21:30:45 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/11 15:01:03 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	run_process(int i, char **av, char **env);
 
 t_data	*init_data(int ac);
 int **make_pipes(int ac);
+void close_pipes(int **fd);
 void do_pipex(int ac, char **av, char **env);
 
 void dup_stdin(int i, char **av, int **fd);
