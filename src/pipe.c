@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:12:10 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/11 18:35:16 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/11 21:49:46 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_data	*init_data(int ac)
 	data->i = -1;
 	data->ac = ac;
 	data->n_commands = ac - 3;
+	data->hd = 0;
 	return (data);
 }
 

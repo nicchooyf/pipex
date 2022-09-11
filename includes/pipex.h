@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:28:23 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/11 18:48:40 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/11 21:49:30 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_data
 int i;
 int ac;
 int n_commands;
+int hd;
 } t_data;
 
 char **get_envp_path(char **envp);
