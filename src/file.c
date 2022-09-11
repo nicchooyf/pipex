@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 19:28:11 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/11 18:50:58 by nchoo            ###   ########.fr       */
+/*   Created: 2022/09/11 18:41:41 by nchoo             #+#    #+#             */
+/*   Updated: 2022/09/11 18:51:22 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int main(int ac, char **av, char **env)
+int get_fd(int i, int ac, char **av)
 {
-	if (ac >= 5)
-	{
-		do_pipex(ac, av, env);
-	}
-	// system("leaks pipex");
+	int fd;
+
+	if (i == 1)
+		fd = open(av[1], O_RDONLY);
+	else
+		fd = open(av[ac -1], O_CREAT | O_WRONLY | O_TRUNC);
+	if (fd == -1)
+		exit_error();
+	return (fd);
 }

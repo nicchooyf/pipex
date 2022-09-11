@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:35:08 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/11 18:21:19 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/11 18:49:48 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 
 void dup_stdin(int i, char **av, int **fd)
 {
+	int file;
+	
 	if (i == 0)
-		dup2(open(av[1], O_RDONLY), STDIN);
+	{
+		file = get_fd(1, 0, av);
+		dup2(file, STDIN);
+	}
 	else
 		dup2(fd[i - 1][0], STDIN);
 }
 
 void dup_stdout(int i, int ac, char **av, int **fd)
 {
-	// ft_printf("stdout i:%d\n", i);
+	int file;
+	
 	if (i == ac - 4) 
 	{
-		dup2(open(av[ac - 1], O_CREAT | O_WRONLY | O_TRUNC), STDOUT);
+		file = get_fd(2, ac, av);
+		dup2(file, STDOUT);
 	}
 	else
 		dup2(fd[i][1], STDOUT);

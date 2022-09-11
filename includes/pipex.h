@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:28:23 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/11 18:21:11 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/11 18:48:40 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@ void dup_stdout(int i, int ac, char **av, int **fd);
 void do_child(t_data *data, char **av, int **fd, char **env);
 
 void exit_error(void);
+
+int get_fd(int i, int ac, char **av);
 
 #endif

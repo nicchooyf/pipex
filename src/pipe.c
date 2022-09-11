@@ -6,14 +6,16 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:12:10 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/11 18:20:54 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/11 18:35:16 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 /*
- *	Feels struct man
+ *	Struct to pass int values
+ *
+ *	# of commands = ac - 3;
  */
 t_data	*init_data(int ac)
 {
@@ -27,8 +29,8 @@ t_data	*init_data(int ac)
 }
 
 /*
- *	Creates a pipe for each command pair
- *	in a double array
+ *	Creates a pipe for each
+ *	pair of commands
  */
 int **make_pipes(int ac)
 {
