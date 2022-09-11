@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:28:23 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/11 15:01:03 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/11 18:21:11 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void do_pipex(int ac, char **av, char **env);
 
 void dup_stdin(int i, char **av, int **fd);
 void dup_stdout(int i, int ac, char **av, int **fd);
-void make_child(t_data *data, char **av, int **fd, char **env);
+void do_child(t_data *data, char **av, int **fd, char **env);
 
 void exit_error(void);
 

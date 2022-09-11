@@ -6,12 +6,15 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:12:10 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/11 15:21:02 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/11 18:20:54 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+/*
+ *	Feels struct man
+ */
 t_data	*init_data(int ac)
 {
 	t_data *data;
@@ -21,9 +24,12 @@ t_data	*init_data(int ac)
 	data->ac = ac;
 	data->n_commands = ac - 3;
 	return (data);
-
 }
 
+/*
+ *	Creates a pipe for each command pair
+ *	in a double array
+ */
 int **make_pipes(int ac)
 {
 	int n;
@@ -32,20 +38,20 @@ int **make_pipes(int ac)
 
 	i = -1;
 	n = ac - 4;
-	ft_printf("n:%d\n", n);
-	fd = malloc(n * sizeof(int *));
+	fd = malloc((n + 1) * sizeof(int *));
 	while (++i < n)
 	{
-		ft_printf("%d\n", i);
 		fd[i] = malloc(2 * sizeof(int));
 		pipe(fd[i]);
 	}
-	// i = 0;
-	// while (fd[i])
-	// 	printf("fd[%d]\n", i++);
+	fd[n] = NULL;
 	return (fd);
 }
 
+/*
+ *	Closes both ends of each pipe
+ *	and frees the allocated fd
+ */
 void close_pipes(int **fd)
 {
 	int i;
@@ -64,27 +70,21 @@ void close_pipes(int **fd)
 /*
  *	./pipex file1 cmd1 ... cmd[i] file2
  *
- * 		
- *	i - index for av
- *	n - index for child
  */
 void do_pipex(int ac, char **av, char **env)
 {
-	// int pid;
 	int **fd;
 	t_data *data;
 
 	fd = make_pipes(ac);
 	data = init_data(ac);
 	while (++data->i < data->n_commands)
+		do_child(data, av, fd, env);
+	data->i = -1;
+	while (fd[++data->i])
 	{
-		make_child(data, av, fd, env);
+		free(fd[data->i]);
 	}
-	// data->i = -1;
-	// while (fd[++data->i])
-	// {
-	// 	free(fd[data->i]);
-	// }
-	// free(fd);
-	// free(data);
+	free(fd);
+	free(data);
 }
