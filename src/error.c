@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 14:02:53 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/11 18:50:50 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/12 15:11:29 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void exit_error(void)
+void exit_error(char *error)
 {
-	perror("Error");
+	perror(error);
 	exit(0);
 }

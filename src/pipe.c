@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:12:10 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/11 21:49:46 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/12 16:23:26 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,13 @@ void close_pipes(int **fd)
  *	./pipex file1 cmd1 ... cmd[i] file2
  *
  */
-void do_pipex(int ac, char **av, char **env)
+void do_pipex(t_data *data, char **av, char **env)
 {
 	int **fd;
-	t_data *data;
 
-	fd = make_pipes(ac);
-	data = init_data(ac);
+	fd = make_pipes(data->ac);
 	while (++data->i < data->n_commands)
 		do_child(data, av, fd, env);
-	data->i = -1;
-	while (fd[++data->i])
-	{
-		free(fd[data->i]);
-	}
-	free(fd);
-	free(data);
+	if (data->hd > 0)
+		unlink("here_doc.txt");
 }

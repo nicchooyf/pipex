@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:28:11 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/11 21:46:13 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/12 15:48:27 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 int main(int ac, char **av, char **env)
 {
+	t_data *data;
+	
 	if (ac < 5)
 		ft_putstr_fd("Not enough arguments given\n", 2);
 	else
-		do_pipex(ac, av, env);
+	{
+		data = init_data(ac);
+		here_doc(data, av);
+		do_pipex(data, av, env);
+	}
 	// system("leaks pipex");
 }
