@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:44:55 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/02 13:35:08 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/01 21:26:01 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdarg.h>
+# include <errno.h>
 
 # include "ft_printf.h"
 # include "get_next_line.h"
