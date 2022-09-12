@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:12:10 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/12 16:23:26 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/12 19:02:46 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void close_pipes(int **fd)
 	i = -1;
 	while (fd[++i])
 	{
-		printf("fd[%d]\n", i);
 		close(fd[i][0]);
 		close(fd[i][1]);
 		free(fd[i]);
@@ -83,4 +82,5 @@ void do_pipex(t_data *data, char **av, char **env)
 		do_child(data, av, fd, env);
 	if (data->hd > 0)
 		unlink("here_doc.txt");
+	close_pipes(fd);
 }
