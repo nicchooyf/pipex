@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:44:55 by nchoo             #+#    #+#             */
 /*   Updated: 2022/09/01 21:26:01 by nchoo            ###   ########.fr       */
@@ -13,6 +13,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <fcntl.h>
 # include <stddef.h>
 # include <stdint.h>
 # include <stdlib.h>
