@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 19:28:11 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/12 15:48:27 by nchoo            ###   ########.fr       */
+/*   Created: 2022/09/02 11:06:54 by nchoo             #+#    #+#             */
+/*   Updated: 2022/09/02 16:06:27 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int main(int ac, char **av, char **envp)
+int run_process(int i, char **av, char **envp)
 {
-	t_data *data;
-	
-	if (ac < 5)
-		ft_putstr_fd("Not enough arguments given\n", 2);
-	else
-	{
-		data = init_data(ac);
-		here_doc(data, av);
-		do_pipex(data, av, env);
-	}
-	// system("leaks pipex");
+	char **options;
+	char *path;
+
+	options = ft_split(av[i], ' ');
+	path = get_right_path(envp, options[0]);
+	if (!path)
+		return (-1);
+	execve(path, options, envp);
+	return (0);
 }
