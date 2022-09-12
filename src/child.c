@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:35:08 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/12 16:13:04 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/12 22:18:32 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,24 @@ void	run_process(int i, char **av, char **env)
 {
 	char **cmd;
 	char *path;
-	
+
 	cmd = ft_split(av[i], ' ');
 	path = get_right_path(env, cmd[0]);
+	if (!path)
+		exit_error(cmd[0]);
 	execve(path, cmd, env);
 }
 
 /*
  *	Forks a process that executes the command
  *
- *	As "execve" ends a process when successful,
+ *	As "execve" ends the calling process when successful,
  *	forking is necessary
  */
 void do_child(t_data *data, char **av, int **fd, char **env)
 {
 	int pid;
-
+	
 	pid = fork();
 	if (pid == 0)
 	{
@@ -87,10 +89,4 @@ void do_child(t_data *data, char **av, int **fd, char **env)
 		close_pipes(fd);
 		run_process(data->i + 2, av, env);
 	}
-	else
-	{
-		int status;
-		waitpid(0, &status, -1);
-	}
-	return ;
 }
