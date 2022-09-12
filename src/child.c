@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:35:08 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/12 22:18:32 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/12 22:30:02 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	run_process(int i, char **av, char **env)
 void do_child(t_data *data, char **av, int **fd, char **env)
 {
 	int pid;
+	int status;
 	
 	pid = fork();
 	if (pid == 0)
@@ -88,5 +89,9 @@ void do_child(t_data *data, char **av, int **fd, char **env)
 		dup_stdout(data, av, fd);
 		close_pipes(fd);
 		run_process(data->i + 2, av, env);
+	}
+	else
+	{
+		waitpid(0, &status, -1);
 	}
 }
