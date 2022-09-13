@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 18:41:41 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/13 21:03:36 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/13 21:38:32 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,11 @@ int	get_fd(t_data *data, char **av)
 void	write_here_doc(t_data *data, int file, char *limiter)
 {
 	char	*text;
-	int		i;
 
-	i = 0;
-	while (++i < data->n_commands - 1)
-		write(1, "pipe ", 5);
-	write(1, "heredoc> ", 9);
+	print_here_doc(data);
 	text = get_next_line(0);
 	while (text)
 	{
-		i = 0;
 		if (ft_strncmp(text, limiter, ft_strlen(text) - 1) == 0)
 		{
 			free(text);
@@ -65,9 +60,7 @@ void	write_here_doc(t_data *data, int file, char *limiter)
 		}
 		write(file, text, ft_strlen(text));
 		free(text);
-		while (++i < data->n_commands - 1)
-			write(1, "pipe ", 5);
-		write(1, "heredoc> ", 9);
+		print_here_doc(data);
 		text = get_next_line(0);
 	}
 }

@@ -6,7 +6,7 @@
 #    By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 19:23:04 by nchoo             #+#    #+#              #
-#    Updated: 2022/09/13 21:27:42 by nchoo            ###   ########.fr        #
+#    Updated: 2022/09/13 21:35:58 by nchoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,13 @@ SRC_DIR		:=	src
 OBJ_DIR		:=	obj
 SRCS		:=	main.c \
 				path.c \
-				error.c \
+				utils.c \
 				child.c \
 				pipe.c \
 				file.c
 SRCS_BONUS	:=	bonus.c \
 				path.c \
-				error.c \
+				utils.c \
 				child.c \
 				pipe.c \
 				file.c

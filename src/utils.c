@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 14:02:53 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/13 17:50:42 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/13 21:45:15 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+/*
+ *	Force exits and prints the error
+ *	associated with the errno
+ */
 void	exit_error(char *error)
 {
 	perror(error);
 	exit(1);
+}
+
+/*
+ *	Mimicks bash's here_doc
+ */
+void	print_here_doc(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (++i < data->n_commands - 1)
+		write(1, "pipe ", 5);
+	write(1, "heredoc> ", 9);
 }
