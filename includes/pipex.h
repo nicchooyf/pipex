@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:28:23 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/12 21:25:57 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/13 18:11:14 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void do_child(t_data *data, char **av, int **fd, char **env);
 void exit_error(char *error);
 
 int get_fd(t_data *data, char **av);
-void write_here_doc(int file, char *limiter);
+void write_here_doc(t_data *data, int file, char *limiter);
 void here_doc(t_data *data, char **av);
 
 #endif

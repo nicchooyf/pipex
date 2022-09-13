@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:35:08 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/12 22:30:02 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/13 17:50:33 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
  *	Else, redirects the read portion of each pipe
  *	to STDIN
  */
-void dup_stdin(t_data *data, char **av, int **fd)
+void	dup_stdin(t_data *data, char **av, int **fd)
 {
-	int file;
-	
-	if (data->hd > 0)
+	int	file;
+
+	if (data->hd > 0 && data->i == 1)
 		dup2(data->hd, STDIN);
 	else if (data->i == 0)
 	{
@@ -41,11 +41,11 @@ void dup_stdin(t_data *data, char **av, int **fd)
  *	Else, redirects the write portion of each pipe
  *	to STDOUT
  */
-void dup_stdout(t_data *data, char **av, int **fd)
+void	dup_stdout(t_data *data, char **av, int **fd)
 {
-	int file;
-	
-	if (data->i == data->ac - 4) 
+	int	file;
+
+	if (data->i == data->ac - 4)
 	{
 		file = get_fd(data, av);
 		dup2(file, STDOUT);
@@ -61,8 +61,8 @@ void dup_stdout(t_data *data, char **av, int **fd)
  */
 void	run_process(int i, char **av, char **env)
 {
-	char **cmd;
-	char *path;
+	char	**cmd;
+	char	*path;
 
 	cmd = ft_split(av[i], ' ');
 	path = get_right_path(env, cmd[0]);
@@ -77,11 +77,11 @@ void	run_process(int i, char **av, char **env)
  *	As "execve" ends the calling process when successful,
  *	forking is necessary
  */
-void do_child(t_data *data, char **av, int **fd, char **env)
+void	do_child(t_data *data, char **av, int **fd, char **env)
 {
-	int pid;
-	int status;
-	
+	int	pid;
+	int	status;
+
 	pid = fork();
 	if (pid == 0)
 	{
@@ -91,7 +91,5 @@ void do_child(t_data *data, char **av, int **fd, char **env)
 		run_process(data->i + 2, av, env);
 	}
 	else
-	{
 		waitpid(0, &status, -1);
-	}
 }

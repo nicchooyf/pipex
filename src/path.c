@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 22:13:01 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/12 21:23:34 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/13 18:29:53 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /*
  *	Function to get the "PATH=" line from envp
  */
-char **get_envp_path(char **envp)
+char	**get_envp_path(char **envp)
 {
-	char *envp_path;
-	int i;
+	char	*envp_path;
+	int		i;
 
 	i = -1;
 	while (envp[++i])
@@ -36,10 +36,10 @@ char **get_envp_path(char **envp)
  *	Splits the "PATH=" line into individual
  *	strings of PATH names, ending with "/"
  */
-char **get_paths(char *envp_path)
+char	**get_paths(char *envp_path)
 {
-	char **paths;
-	int	i;
+	char	**paths;
+	int		i;
 
 	i = -1;
 	paths = ft_split(envp_path, ':');
@@ -55,11 +55,11 @@ char **get_paths(char *envp_path)
  *	Runs through each PATH to find the correct
  *	one
  */
-char *get_right_path(char **envp, char *cmd)
+char	*get_right_path(char **envp, char *cmd)
 {
-	char **paths;
-	char *cmd_path;
-	int	i;
+	char	**paths;
+	char	*cmd_path;
+	int		i;
 
 	i = -1;
 	paths = get_envp_path(envp);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:12:10 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/12 19:02:46 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/13 18:56:12 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  */
 t_data	*init_data(int ac)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = malloc(sizeof(t_data));
 	data->i = -1;
@@ -33,11 +33,11 @@ t_data	*init_data(int ac)
  *	Creates a pipe for each
  *	pair of commands
  */
-int **make_pipes(int ac)
+int	**make_pipes(int ac)
 {
-	int n;
-	int i;
-	int **fd;
+	int	n;
+	int	i;
+	int	**fd;
 
 	i = -1;
 	n = ac - 4;
@@ -55,9 +55,9 @@ int **make_pipes(int ac)
  *	Closes both ends of each pipe
  *	and frees the allocated fd
  */
-void close_pipes(int **fd)
+void	close_pipes(int **fd)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (fd[++i])
@@ -70,12 +70,15 @@ void close_pipes(int **fd)
 }
 
 /*
- *	./pipex file1 cmd1 ... cmd[i] file2
+ *	Creates pipes for each pair of commands,
+ *	then calls forks for each command given
  *
+ *	If here_doc was encountered, deletes and unlinks
+ *	the temporary file
  */
-void do_pipex(t_data *data, char **av, char **env)
+void	do_pipex(t_data *data, char **av, char **env)
 {
-	int **fd;
+	int	**fd;
 
 	fd = make_pipes(data->ac);
 	while (++data->i < data->n_commands)
