@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 18:41:41 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/13 18:19:46 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/13 21:03:36 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	here_doc(t_data *data, char **av)
 	if (ft_strncmp("here_doc", av[1], 9) != 0)
 	{
 		if (open(av[1], O_RDONLY) == -1)
-			exit_error("infile");
+			exit_error(av[1]);
 		return ;
 	}
 	data->i++;
