@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 19:28:11 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/13 15:05:48 by nchoo            ###   ########.fr       */
+/*   Created: 2022/09/05 14:02:53 by nchoo             #+#    #+#             */
+/*   Updated: 2022/09/12 22:25:18 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int main(int ac, char **av, char **envp)
+void exit_error(char *error)
 {
-	t_data *data;
-	
-	if (ac < 5)
-		ft_putstr_fd("Not enough arguments given\n", 2);
-	else
-	{
-		data = init_data(ac);
-		here_doc(data, av);
-		do_pipex(data, av, envp);
-		free(data);
-	}
-	// system("leaks pipex");
+	perror(error);
+	exit(1);
 }

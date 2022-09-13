@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 22:13:01 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/01 21:22:28 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/12 21:23:34 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ char **get_paths(char *envp_path)
 	return (paths);
 }
 
+/*
+ *	Runs through each PATH to find the correct
+ *	one
+ */
 char *get_right_path(char **envp, char *cmd)
 {
 	char **paths;
