@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 18:41:41 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/13 21:38:32 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/15 15:06:50 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@ int	get_fd(t_data *data, char **av)
 }
 
 /*
+ *	Trims away the newline after each line is written
+ */
+static char	*trim_nl(char *str)
+{
+	char	*ret;
+
+	ret = ft_strtrim(str, "\n");
+	free(str);
+	return (ret);
+}
+
+/*
  *	Reads from stdin using get_next_line and
  *	writes to the temporary file
  */
@@ -51,17 +63,20 @@ void	write_here_doc(t_data *data, int file, char *limiter)
 
 	print_here_doc(data);
 	text = get_next_line(0);
+	text = trim_nl(text);
 	while (text)
 	{
-		if (ft_strncmp(text, limiter, ft_strlen(text) - 1) == 0)
+		if (!ft_strncmp(text, limiter, ft_strlen(limiter) + 1))
 		{
 			free(text);
 			return ;
 		}
 		write(file, text, ft_strlen(text));
+		ft_putendl_fd("\n", file);
 		free(text);
 		print_here_doc(data);
 		text = get_next_line(0);
+		text = trim_nl(text);
 	}
 }
 

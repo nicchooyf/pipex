@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 22:13:01 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/13 18:29:53 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/15 14:59:55 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**get_envp_path(char **envp)
 		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
 			break ;
 	}
-	envp_path = ft_substr(envp[i], 6, ft_strlen(envp[i]) - 6);
+	envp_path = ft_substr(envp[i], 5, ft_strlen(envp[i]) - 5);
 	if (!envp_path)
 		return (NULL);
 	return (get_paths(envp_path));

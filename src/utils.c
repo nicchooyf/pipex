@@ -6,7 +6,7 @@
 /*   By: nchoo <nchoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 14:02:53 by nchoo             #+#    #+#             */
-/*   Updated: 2022/09/13 21:45:15 by nchoo            ###   ########.fr       */
+/*   Updated: 2022/09/15 15:07:48 by nchoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	print_here_doc(t_data *data)
 
 	i = 0;
 	while (++i < data->n_commands - 1)
-		write(1, "pipe ", 5);
-	write(1, "heredoc> ", 9);
+		ft_printf("pipe ");
+	ft_printf("heredoc> ");
 }
